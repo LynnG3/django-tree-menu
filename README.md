@@ -81,23 +81,38 @@ python manage.py runserver
 ### Admin Interface
 
 <details>
-<summary>Show Admin Panel Screenshot</summary>
+<summary>📊 Show Admin Panel</summary>
 <p align="center">
-  <img src="screenshots/admin.png" alt="Admin Interface" width="800"/>
+  <img src="./screenshots/admin.png" alt="Admin Interface" width="800"/>
 </p>
 <p align="center">
-  <em>Django admin interface</em>
+  <em>Django admin interface for managing menu items</em>
 </p>
 </details>
 
-### Different Menu States
+### Menu States and Navigation
 
-<div align="center">
-  <img src="screenshots/menu_first_level.png" alt="Menu State 1" width="800"/>
-  <img src="screenshots/menu_second_level.png" alt="Menu State 2" width="800"/>
-  <img src="screenshots/menu_extended.png" alt="Menu State 3" width="800"/>
-  <p><em>Different states of the menu: default, active item, expanded submenu</em></p>
-</div>
+<details>
+<summary>🌲 Show Menu Examples</summary>
+
+#### First Level Menu
+<p align="center">
+  <img src="./screenshots/menu_first_level.png" alt="First Level Menu" width="800"/>
+  <p align="center"><em>Default state with first level items</em></p>
+</p>
+
+#### Second Level Menu
+<p align="center">
+  <img src="./screenshots/menu_second_level.png" alt="Second Level Menu" width="800"/>
+  <p align="center"><em>Menu with active second level item</em></p>
+</p>
+
+#### Extended Menu View
+<p align="center">
+  <img src="./screenshots/menu_extended.png" alt="Extended Menu" width="800"/>
+  <p align="center"><em>Fully expanded menu with active items and submenus</em></p>
+</p>
+
 
 ## 📝 License
 
