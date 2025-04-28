@@ -1,4 +1,4 @@
-"""Тестовые URLS для проверки работы приложения
+"""Test URLs for checking the application.
 """
 from django.urls import path
 from .views import test_menu

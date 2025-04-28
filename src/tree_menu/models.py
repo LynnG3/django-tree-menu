@@ -1,23 +1,33 @@
-"""Models for tree-menu.
-"""
+"""Models for the Tree Menu application."""
 from django.db import models
 from django.urls import reverse, NoReverseMatch
 
 
 class MenuItem(models.Model):
-    """Модель элемента меню.
+    """
+    Model for storing menu items in a hierarchical structure.
+
+    This model represents menu items that can be organized in a tree structure,
+    with support for named URLs and explicit URL paths.
+
+    Attributes:
+        name (str): The display name of the menu item
+        menu_name (str): Identifier for grouping menu items
+        url (str): URL path or named URL for the menu item
+        parent (MenuItem): Parent menu item (nullable for root items)
+        position (int): Order position within the same level
     """
     name = models.CharField(
         max_length=100,
-        verbose_name='Название пункта'
+        verbose_name='Item name'
     )
     menu_name = models.CharField(
         max_length=100,
-        verbose_name='Название меню'
+        verbose_name='Menu name'
     )
     url = models.CharField(
         max_length=255,
-        verbose_name='URL или named URL'
+        verbose_name='URL or named URL'
     )
     parent = models.ForeignKey(
         'self',
@@ -25,22 +35,26 @@ class MenuItem(models.Model):
         blank=True,
         related_name='children',
         on_delete=models.CASCADE,
-        verbose_name='Родительский пункт'
+        verbose_name='Parent item'
     )
     position = models.IntegerField(
-        default=0, verbose_name='Позиция'
+        default=1,
+        verbose_name='Position',
+        help_text='Order number within menu level'
     )
 
     class Meta:
+        """Meta options for MenuItem model."""
         ordering = ['position']
-        verbose_name = 'Пункт меню'
-        verbose_name_plural = 'Пункты меню'
+        verbose_name = 'Menu item'
+        verbose_name_plural = 'Menu items'
 
     def get_url(self):
-        """Получает URL
+        """
+        Resolve URL for the menu item.
 
         Returns:
-            str: адрес страницы для пункта меню
+            str: Resolved URL path, either from named URL or direct URL
         """
         try:
             return reverse(self.url)
@@ -48,4 +62,5 @@ class MenuItem(models.Model):
             return self.url
 
     def __str__(self):
+        """Return string representation of the menu item."""
         return self.name

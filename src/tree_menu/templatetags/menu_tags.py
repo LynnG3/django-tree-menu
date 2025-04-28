@@ -1,4 +1,4 @@
-""" Еуьздфеуефпы"""
+"""Template tags for rendering tree menus."""
 import time
 
 from typing import Dict, Set, List, Optional
@@ -19,27 +19,23 @@ def draw_menu(context, menu_name: str) -> dict:
         menu_name: Name of the menu to render
 
     Returns:
-        Dict containing menu items tree and active item
+        dict: Dict containing menu items tree and active item
     """
     start_time = time.time()
     request = context['request']
     current_url = request.path
 
-    # Получаем все пункты меню одним запросом
     menu_items = MenuItem.objects.filter(
         menu_name=menu_name
     ).select_related('parent').order_by('position')
 
-    # Создаем словарь для быстрого доступа к элементам
     items_dict = {item.id: item for item in menu_items}
 
-    # Находим активный пункт
     active_item = next(
         (item for item in menu_items if item.get_url() == current_url),
         None
     )
 
-    # Собираем список развернутых пунктов
     expanded_items = set()
     if active_item:
         current = active_item
@@ -47,7 +43,6 @@ def draw_menu(context, menu_name: str) -> dict:
             expanded_items.add(current.id)
             current = items_dict.get(current.parent_id)
 
-    # Строим дерево меню
     tree = [
         {
             'item': item,
