@@ -76,6 +76,29 @@ python manage.py runserver
 - Django 5.2
 - No additional dependencies required
 
+## 📸 Screenshots
+
+### Admin Interface
+
+<details>
+<summary>Show Admin Panel Screenshot</summary>
+<p align="center">
+  <img src="screenshots/admin.png" alt="Admin Interface" width="800"/>
+</p>
+<p align="center">
+  <em>Django admin interface</em>
+</p>
+</details>
+
+### Different Menu States
+
+<div align="center">
+  <img src="screenshots/menu_first_level.png" alt="Menu State 1" width="800"/>
+  <img src="screenshots/menu_second_level.png" alt="Menu State 2" width="800"/>
+  <img src="screenshots/menu_extended.png" alt="Menu State 3" width="800"/>
+  <p><em>Different states of the menu: default, active item, expanded submenu</em></p>
+</div>
+
 ## 📝 License
 
 MIT License
